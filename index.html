@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOLDEN SPOON Hostel Booking</title>
     <style>
-        /* General Styles */
-        title{<img src="myimage.jpg">}
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             line-height: 1.6;
+            background-image: url('Hostel.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-
-        /* Header */
         header {
-            background: #003366;
+            background-image: url('Spoon.jpg');
             color: white;
             padding: 15px 0;
         }
-
         header .container {
             display: flex;
             justify-content: space-between;
@@ -28,21 +26,17 @@
             width: 90%;
             margin: auto;
         }
-
         header nav a {
             color: white;
             margin-left: 20px;
             text-decoration: none;
             font-weight: bold;
         }
-
         header nav a:hover {
             text-decoration: underline;
         }
-
-        /* Hero Section */
         .hero {
-            background: url('https://images.unsplash.com/photo-1590490359683-8a5de6b3a53b') no-repeat center center/cover;
+            background: rgba(0,0,0,0.5);
             height: 350px;
             color: white;
             display: flex;
@@ -50,13 +44,6 @@
             justify-content: center;
             text-align: center;
         }
-
-        .hero-text {
-            background: rgba(0,0,0,0.5);
-            padding: 20px;
-            border-radius: 8px;
-        }
-
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -66,75 +53,57 @@
             border-radius: 5px;
             margin-top: 10px;
         }
-
         .btn:hover {
             background: #e65c00;
         }
-
-        /* Sections */
         .section {
             padding: 40px 20px;
             text-align: center;
         }
-
         .section h2 {
             margin-bottom: 20px;
             color: #003366;
         }
-
-        /* Booking Form */
         .booking-form {
             max-width: 400px;
             margin: auto;
             text-align: left;
         }
-
         .booking-form label {
             display: block;
             margin-top: 10px;
             font-weight: bold;
         }
-
-        .booking-form input,
-        .booking-form select {
+        .booking-form input, .booking-form select {
             width: 100%;
             padding: 8px;
             margin-top: 5px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-
         .booking-form button {
             width: 100%;
             margin-top: 15px;
         }
-
-        /* Payment Section */
-        #paymentSection input {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        /* Footer */
         footer {
             background: #003366;
             color: white;
             text-align: center;
             padding: 10px;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-            }
-            header nav {
-                margin-top: 10px;
-            }
+        .form-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
         }
     </style>
 </head>
@@ -142,7 +111,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <h1>School Hostel Booking</h1>
+            <h1>GOLDEN SPOON HOSTEL</h1>
             <nav>
                 <a href="#about">About</a>
                 <a href="#booking">Book a Room</a>
@@ -151,120 +120,107 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-text">
+        <div>
             <h2>Comfortable & Affordable Hostel Rooms</h2>
-            <p>Book your stay at our school hostel easily and securely.</p>
-            <a href="#booking" class="btn">Book Now</a>
+            <p>Book your stay easily and securely.</p>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about" class="section">
         <h2>About Our Hostel</h2>
-        <p>
-            Our school hostel provides safe, clean, and affordable accommodation for students.
-            We offer various room types, 24/7 security, Wi-Fi, and convenient access to campus facilities.
-        </p>
+        <p>We provide safe, clean, and affordable accommodation for students with Wi-Fi, 24/7 security, and easy campus access.</p>
     </section>
 
-    <!-- Booking Form -->
+    <!-- Booking -->
     <section id="booking" class="section">
         <h2>Book a Room</h2>
-        <form id="bookingForm" class="booking-form">
+        <form id="bookingForm" class="booking-form" action="https://formspree.io/f/xanbvyoy" method="POST" enctype="multipart/form-data">
             <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="text" name="name" required>
 
             <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="email" name="email" required>
 
             <label for="room">Room Type</label>
-            <select id="room" required>
+            <select name="room" required>
                 <option value="">-- Select Room --</option>
-                <option value="single">Single Room</option>
-                <option value="double">Double Room</option>
-                <option value="shared">Shared Room</option>
+                <option value="Single">Single Room</option>
+                <option value="Double">Double Room</option>
+                <option value="Shared">Shared Room</option>
             </select>
 
             <label for="checkin">Check-in Date</label>
-            <input type="date" id="checkin" required>
+            <input type="date" name="checkin" required>
 
             <label for="checkout">Check-out Date</label>
-            <input type="date" id="checkout" required>
+            <input type="date" name="checkout" required>
 
-            <button type="button" id="checkAvailability" class="btn">Check Availability</button>
+            <label for="transactionId">MoMo Transaction ID</label>
+            <input type="text" name="transactionId" required>
+
+    
+
+            <button type="submit" class="btn">Submit Booking</button>
+            
+            <div id="form-message" class="form-message"></div>
         </form>
-
-        <div id="availabilityResult"></div>
-
-        <!-- Payment Section -->
-        <div id="paymentSection" style="display:none; margin-top:20px;">
-            <h3>Payment Information</h3>
-            <label for="cardNumber">Card Number</label>
-            <input type="text" id="cardNumber" placeholder="Enter card number">
-
-            <label for="expiry">Expiry Date</label>
-            <input type="month" id="expiry">
-
-            <label for="cvv">CVV</label>
-            <input type="text" id="cvv" placeholder="3-digit code">
-
-            <button type="button" id="payNow" class="btn">Pay Now</button>
-        </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="section">
         <h2>Contact Us</h2>
-        <p>Email: hostel@school.edu</p>
-        <p>Phone: +233 123 456 789</p>
+        <p>Email: casiodavi9@gmail.com</p>
+        <p>Phone: 0536 916 900</p>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 School Hostel Booking. All Rights Reserved.</p>
+        <p>&copy; 2025 GOLDEN SPOON Hostel. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Room availability data
-        const availableRooms = {
-            single: 5,
-            double: 3,
-            shared: 10
-        };
-
-        document.getElementById('checkAvailability').addEventListener('click', function() {
-            const roomType = document.getElementById('room').value;
-            const resultDiv = document.getElementById('availabilityResult');
-
-            if (!roomType) {
-                resultDiv.innerHTML = "<p style='color:red;'>Please select a room type.</p>";
-                return;
-            }
-
-            if (availableRooms[roomType] > 0) {
-                resultDiv.innerHTML = `<p style="color:green;">Good news! ${availableRooms[roomType]} ${roomType} room(s) available.</p>`;
-                document.getElementById('paymentSection').style.display = "block";
-            } else {
-                resultDiv.innerHTML = `<p style="color:red;">Sorry, no ${roomType} rooms available.</p>`;
-                document.getElementById('paymentSection').style.display = "none";
-            }
-        });
-
-        document.getElementById('payNow').addEventListener('click', function() {
-            const card = document.getElementById('cardNumber').value;
-            const expiry = document.getElementById('expiry').value;
-            const cvv = document.getElementById('cvv').value;
-
-            if (card && expiry && cvv) {
-                alert("✅ Payment Successful! Your booking is confirmed.");
-                document.getElementById('bookingForm').reset();
-                document.getElementById('paymentSection').style.display = "none";
-                document.getElementById('availabilityResult').innerHTML = "";
-            } else {
-                alert("⚠ Please fill all payment details.");
-            }
+        // Form submission handling
+        const form = document.getElementById('bookingForm');
+        const formMessage = document.getElementById('form-message');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    formMessage.textContent = 'Thank you! Your booking request has been submitted successfully.';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    form.reset();
+                } else {
+                    return response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            formMessage.textContent = data.errors.map(error => error.message).join(', ');
+                        } else {
+                            formMessage.textContent = 'Oops! There was a problem submitting your form.';
+                        }
+                        formMessage.className = 'form-message error';
+                        formMessage.style.display = 'block';
+                    });
+                }
+            })
+            .catch(error => {
+                formMessage.textContent = 'Oops! There was a problem submitting your form.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+            });
         });
     </script>
 </body>
